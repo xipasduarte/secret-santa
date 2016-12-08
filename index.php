@@ -41,12 +41,11 @@ foreach ( $participants as $key => $participant ) {
 		);
 	}
 }
-// var_dump($participants);
-// die();
 // Let's mix things.
 shuffle( $participants );
 
 $number_participants = count( $participants );
+
 for ( $i = 0; $i < $number_participants; $i++ ) {
 	if ( $i !== $number_participants - 1 ) {
 		$santa = $participants[ $i ];
@@ -61,11 +60,10 @@ for ( $i = 0; $i < $number_participants; $i++ ) {
 	// Send the email to the santa.
 	$to      = $santa['email'];
 	$subject = 'Secret Santa da Comemoração de Natal/Solstício de Inverno';
-	$message = "Olá querido Pai Natal,\n\nA tua criança este ano é:
-{$kid['name']}\n(O email dela, caso seja necessário, é:
-{$kid['email']}\n";
+	$message = "Olá querido Pai Natal,\n\nA tua criança este ano é: {$kid['name']}\n
+(O email dela, caso seja necessário, é: {$kid['email']})\n";
 	$headers = "To: {$santa['name']} <{$santa['email']}>" . "\r\n" .
-		'From: Loving God <xipasduate@gmail.com>' . "\r\n" .
+		'From: Baby Jesus <bj@god.com>' . "\r\n" .
 		'Reply-To: <xipasduate@gmail.com>' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 
