@@ -7,15 +7,16 @@ $participants_file = dirname( __FILE__ ) . '/participants.txt';
 $secret_santa_file = dirname( __FILE__ ) . '/secret-santa.txt';
 
 $participants_handler = fopen( $participants_file, 'r' );
-$santas_handler = fopen( $secret_santa_file, 'x' );
 
 if ( ! $participants_handler ) {
 	die(
-		"There's nothing to be done.\n\nProvide a list of participants in the
-		 form of a file named: participants.txt\nThe file should have one email
-		 per line."
+		"There's nothing to be done.\n\n
+		Provide a list of participants in the form of a file named: participants.txt\n
+		The file should have one email per line."
 	);
 }
+
+$santas_handler = fopen( $secret_santa_file, 'x' );
 
 if ( ! $santas_handler ) {
 	die( 'The santa callings were already sent. Happy shopping.' );
