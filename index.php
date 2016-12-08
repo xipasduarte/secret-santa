@@ -70,7 +70,13 @@ for ( $i = 0; $i < $number_participants; $i++ ) {
 		'Reply-To: <xipasduate@gmail.com>' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 
-	mail( $to, $subject, $message, $headers );
+	$mail = mail( $to, $subject, $message, $headers );
+
+	if ( $mail ) {
+		printf( '%d santas in the house...', $i + 1 );
+	} else {
+		die( 'No email' );
+	}
 }
 
 // Close files.
