@@ -10,9 +10,8 @@ $participants_handler = fopen( $participants_file, 'r' );
 
 if ( ! $participants_handler ) {
 	die(
-		"There's nothing to be done.\n\n
-		Provide a list of participants in the form of a file named: participants.txt\n
-		The file should have one email per line."
+		"There's nothing to be done.\n\nProvide a list of participants in the
+form of a file named: participants.txt\nThe file should have one email per line."
 	);
 }
 
@@ -63,14 +62,14 @@ for ( $i = 0; $i < $number_participants; $i++ ) {
 	$to      = $santa['email'];
 	$subject = 'Secret Santa da Comemoração de Natal/Solstício de Inverno';
 	$message = "Olá querido Pai Natal,\n\nA tua criança este ano é:
-		{$kid['name']}\n(O email dela, caso seja necessário, é:
-		{$kid['email']}\n";
+{$kid['name']}\n(O email dela, caso seja necessário, é:
+{$kid['email']}\n";
 	$headers = "To: {$santa['name']} <{$santa['email']}>" . "\r\n" .
 		'From: Loving God <xipasduate@gmail.com>' . "\r\n" .
 		'Reply-To: <xipasduate@gmail.com>' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 
-	$mail = mail( $to, $subject, $message, $headers );
+	$mail = mail( $to, $subject, $message, $headers, '-r santa@ballsdeep.com' );
 
 	if ( $mail ) {
 		printf( '%d santas in the house...', $i + 1 );
