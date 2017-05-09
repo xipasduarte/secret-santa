@@ -28,6 +28,7 @@ if ( empty( $participants ) ) {
 }
 
 $participants = explode( "\n", $participants );
+$number_participants = count( $participants );
 
 // Trim the empty spaces (because people and editors are stupid).
 foreach ( $participants as $key => $participant ) {
@@ -44,7 +45,9 @@ foreach ( $participants as $key => $participant ) {
 // Let's mix things.
 shuffle( $participants );
 
-$number_participants = count( $participants );
+var_dump($participants);
+die();
+
 
 for ( $i = 0; $i < $number_participants; $i++ ) {
 	if ( $i !== $number_participants - 1 ) {
@@ -62,12 +65,8 @@ for ( $i = 0; $i < $number_participants; $i++ ) {
 	$subject = 'Secret Santa da Comemoração de Natal/Solstício de Inverno';
 	$message = "Olá querido Pai Natal,\n\nA tua criança este ano é: {$kid['name']}\n
 (O email dela, caso seja necessário, é: {$kid['email']})\n";
-	$headers = "To: {$santa['name']} <{$santa['email']}>" . "\r\n" .
-		'From: Baby Jesus <bj@god.com>' . "\r\n" .
-		'Reply-To: <xipasduate@gmail.com>' . "\r\n" .
-		'X-Mailer: PHP/' . phpversion();
 
-	$mail = mail( $to, $subject, $message, $headers, '-r santa@ballsdeep.com' );
+	$mail = mail( $to, $subject, $message );
 
 	if ( $mail ) {
 		printf( '%d santas in the house...', $i + 1 );
